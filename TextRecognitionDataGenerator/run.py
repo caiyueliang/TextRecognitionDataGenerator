@@ -331,6 +331,8 @@ def main():
     lang_dict = load_dict(args.language)
     # print("lang_dict", lang_dict)
     print("lang_dict", len(lang_dict))
+    for str in lang_dict:
+        print(str, end="")
 
     # Create font (path) list
     if not args.font:

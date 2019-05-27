@@ -66,7 +66,7 @@ def parse_arguments():
         type=int,
         nargs="?",
         help="The number of images to be created.",
-        default=100
+        default=1
     )
     parser.add_argument(
         "-rs",
@@ -289,6 +289,17 @@ def load_dict(lang):
     return lang_dict
 
 
+def load_one_font(lang, name):
+    """
+        Load all fonts in the fonts directories
+    """
+
+    if lang == 'cn':
+        return [os.path.join('fonts/cn', name)]
+    else:
+        return [os.path.join('fonts/latin', font) for font in os.listdir('fonts/latin')]
+
+
 def load_fonts(lang):
     """
         Load all fonts in the fonts directories
@@ -323,7 +334,8 @@ def main():
 
     # Create font (path) list
     if not args.font:
-        fonts = load_fonts(args.language)
+        fonts = load_one_font(args.language, "FZLTXIHJW.ttf")
+        # fonts = load_fonts(args.language)
         print("[111] fonts", fonts)
     else:
         if os.path.isfile(args.font):

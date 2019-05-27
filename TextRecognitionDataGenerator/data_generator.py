@@ -73,6 +73,7 @@ class FakeTextDataGenerator(object):
 
         # Horizontal text
         if orientation == 0:
+            # print("distorted_img", distorted_img)
             new_width = int(distorted_img.size[0] * (float(size - vertical_margin) / float(distorted_img.size[1])))
             resized_img = distorted_img.resize((new_width, size - vertical_margin), Image.ANTIALIAS)
             background_width = width if width > 0 else new_width + horizontal_margin

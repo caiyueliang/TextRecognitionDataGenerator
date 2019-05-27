@@ -305,13 +305,16 @@ def main():
 
     # Creating word list
     lang_dict = load_dict(args.language)
+    print("lang_dict", lang_dict)
 
     # Create font (path) list
     if not args.font:
         fonts = load_fonts(args.language)
+        print("[111] fonts", fonts)
     else:
         if os.path.isfile(args.font):
             fonts = [args.font]
+            print("[222] fonts", fonts)
         else:
             sys.exit("Cannot open font")
 
@@ -319,16 +322,20 @@ def main():
     strings = []
 
     if args.use_wikipedia:
+        print("use wikipedia: create_strings_from_wikipedia")
         strings = create_strings_from_wikipedia(args.length, args.count, args.language)
     elif args.input_file != '':
+        print("use input_file: create_strings_from_file")
         strings = create_strings_from_file(args.input_file, args.count)
     elif args.random_sequences:
+        print("use random_sequences: create_strings_randomly")
         strings = create_strings_randomly(args.length, args.random, args.count,
                                           args.include_letters, args.include_numbers, args.include_symbols, args.language)
         # Set a name format compatible with special characters automatically if they are used
         if args.include_symbols or True not in (args.include_letters, args.include_numbers, args.include_symbols):
             args.name_format = 2
     else:
+        print("use normal: create_strings_from_dict")
         strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)
 
     string_count = len(strings)

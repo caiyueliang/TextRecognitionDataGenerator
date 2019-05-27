@@ -7,6 +7,7 @@ import sys
 from tqdm import tqdm
 from string_generator import (
     create_strings_from_dict,
+    create_strings_from_dict_average,
     create_strings_from_file,
     create_strings_from_wikipedia,
     create_strings_randomly
@@ -58,6 +59,14 @@ def parse_arguments():
         nargs="?",
         help="The number of images to be created.",
         default=1000
+    )
+    parser.add_argument(
+        "-ts",
+        "--loop_times",
+        type=int,
+        nargs="?",
+        help="The number of images to be created.",
+        default=100
     )
     parser.add_argument(
         "-rs",
@@ -274,6 +283,9 @@ def load_dict(lang):
     lang_dict = []
     with open(os.path.join('dicts', lang + '.txt'), 'r', encoding="utf8", errors='ignore') as d:
         lang_dict = d.readlines()
+
+    for i in range(len(lang_dict)):
+        lang_dict[i] = lang_dict[i].strip()
     return lang_dict
 
 
@@ -338,7 +350,8 @@ def main():
             args.name_format = 2
     else:
         print("use normal: create_strings_from_dict")
-        strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)
+        # strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)
+        strings = create_strings_from_dict_average(length=args.length, loop_times=args.loop_times, lang_dict=lang_dict)
 
     string_count = len(strings)
 

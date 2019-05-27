@@ -2,6 +2,7 @@ import random
 import re
 import string
 import requests
+import copy
 
 from bs4 import BeautifulSoup
 
@@ -36,25 +37,36 @@ def create_strings_from_dict(length, allow_variable, count, lang_dict):
     for _ in range(0, count):
         current_string = ""
         for _ in range(0, random.randint(1, length) if allow_variable else length):
-            current_string += lang_dict[random.randrange(dict_len)][:-1]
+            current_string += lang_dict[random.randrange(dict_len)]
             current_string += ' '
+            # print(current_string)
         strings.append(current_string[:-1])
     return strings
 
 
-def create_strings_from_dict_average(length, allow_variable, count, lang_dict):
+def create_strings_from_dict_average(length, loop_times, lang_dict, min_length=2):
     """
         Create all strings by picking X random word in the dictionnary
     """
-
-    dict_len = len(lang_dict)
     strings = []
-    for _ in range(0, count):
+
+    for i in range(loop_times):
+        copy_dict = copy.copy(lang_dict)
+        # print(len(copy_dict))
         current_string = ""
-        for _ in range(0, random.randint(1, length) if allow_variable else length):
-            current_string += lang_dict[random.randrange(dict_len)][:-1]
+
+        while len(copy_dict) != 0:
+            index = random.randrange(len(copy_dict))
+            current_string += copy_dict[index]
+            copy_dict.pop(index)
             current_string += ' '
-        strings.append(current_string[:-1])
+
+            if len(current_string) == length * 2:
+                strings.append(current_string[:-1])
+                current_string = ""
+
+        if len(current_string) > min_length * 2:
+            strings.append(current_string[:-1])
     return strings
 
 

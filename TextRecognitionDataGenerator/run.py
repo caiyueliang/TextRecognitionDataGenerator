@@ -100,7 +100,7 @@ def parse_arguments():
         "--random",
         action="store_true",
         help="Define if the produced string will have variable word count (with --length being the maximum)",
-        default=True
+        default=False
     )
     parser.add_argument(
         "-f",

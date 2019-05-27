@@ -1,3 +1,5 @@
 python run.py -l cn -c 1000 -w 5
 
 python run.py --language cn --length 10 --format 32 --loop_times 100
+
+python run.py --language cn --length 10 --format 32 --loop_times 10 --text_color "#00B2EE"

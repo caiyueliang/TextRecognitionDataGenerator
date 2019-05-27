@@ -14,11 +14,13 @@ from string_generator import (
 from data_generator import FakeTextDataGenerator
 from multiprocessing import Pool
 
+
 def margins(margin):
     margins = margin.split(',')
     if len(margins) == 1:
         return [margins[0]] * 4
     return [int(m) for m in margins]
+
 
 def parse_arguments():
     """
@@ -98,7 +100,7 @@ def parse_arguments():
         "--random",
         action="store_true",
         help="Define if the produced string will have variable word count (with --length being the maximum)",
-        default=False
+        default=True
     )
     parser.add_argument(
         "-f",
@@ -261,8 +263,8 @@ def parse_arguments():
         help="Define font to be used"
     )
 
-
     return parser.parse_args()
+
 
 def load_dict(lang):
     """
@@ -274,6 +276,7 @@ def load_dict(lang):
         lang_dict = d.readlines()
     return lang_dict
 
+
 def load_fonts(lang):
     """
         Load all fonts in the fonts directories
@@ -283,6 +286,7 @@ def load_fonts(lang):
         return [os.path.join('fonts/cn', font) for font in os.listdir('fonts/cn')]
     else:
         return [os.path.join('fonts/latin', font) for font in os.listdir('fonts/latin')]
+
 
 def main():
     """
@@ -327,7 +331,6 @@ def main():
     else:
         strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)
 
-
     string_count = len(strings)
 
     p = Pool(args.thread_count)
@@ -367,6 +370,7 @@ def main():
             for i in range(string_count):
                 file_name = str(i) + "." + args.extension
                 f.write("{} {}\n".format(file_name, strings[i]))
+
 
 if __name__ == '__main__':
     main()

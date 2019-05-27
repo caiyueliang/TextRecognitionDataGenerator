@@ -1,0 +1,3 @@
+python run.py -l cn -c 1000 -w 5
+
+python run.py --language cn --count 1000 --length 10 --format 32

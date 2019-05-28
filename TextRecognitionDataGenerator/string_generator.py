@@ -65,8 +65,8 @@ def create_strings_from_dict_average(length, loop_times, lang_dict, min_length=2
                 strings.append(current_string[:-1])
                 current_string = ""
 
-        if len(current_string) > min_length * 2:
-            strings.append(current_string[:-1])
+        # if len(current_string) > min_length * 2:
+        #     strings.append(current_string[:-1])
     return strings
 
 

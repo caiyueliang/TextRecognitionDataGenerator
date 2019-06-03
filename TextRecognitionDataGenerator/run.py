@@ -336,7 +336,7 @@ def main():
 
     # Create font (path) list
     if not args.font:
-        fonts = load_one_font(args.language, "FZLTXIHJW.ttf")
+        fonts = load_one_font(args.language, "huawenxihei.ttf")
         # fonts = load_fonts(args.language)
         print("[111] fonts", fonts)
     else:

@@ -64,7 +64,7 @@ def create_strings_from_string_format(string_format, count, lang_dict):
         #     current_string += lang_dict[random.randrange(dict_len)]
         #     current_string += ' '
         #     # print(current_string)
-        print(current_string)
+        # print(current_string)
         strings.append(current_string)
     return strings
 

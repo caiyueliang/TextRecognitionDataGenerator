@@ -21,6 +21,6 @@ python run.py --language cn --length 5 --format 32 --loop_times 1 --output_dir "
 python run.py --language cn --length 13 --format 32 --loop_times 1 --output_dir "outs/train/address/" --title "住  址   "
 
 # ==========================================================================================================================================
-python run.py --language cn --format 32 --count 10000 --output_dir "outs/train/sex/" --string_format "性  别   X      民  族 X"  --width 300 --alignment 0
-python run.py --language cn --format 32 --count 10000 --output_dir "outs/train/birthday/" --string_format "出  生   XXXX  年 XX 月 XX 日"  --width 300 --alignment 0
-python run.py --language cn --format 32 --count 10000 --output_dir "outs/train/id/" --string_format "公民身份号码    XXXXXXXXXXXXXXXXXX"  --width 300 --alignment 0
+python run.py --language cn --format 32 --count 10000 --output_dir "outs/train/sex/" --string_format "性  别   X      民  族 X" --width 300 --alignment 0
+python run.py --language cn --format 32 --count 10000 --output_dir "outs/train/birthday/" --string_format "出  生   XXXX  年 XX 月 XX 日" --width 300 --alignment 0 --dict "cn_num"
+python run.py --language cn --format 32 --count 10000 --output_dir "outs/train/id/" --string_format "公民身份号码    XXXXXXXXXXXXXXXXXX" --alignment 0 --dict "cn_numx"

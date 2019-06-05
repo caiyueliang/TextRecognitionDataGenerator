@@ -288,6 +288,14 @@ def parse_arguments():
         help="Define font to be used",
         default=""
     )
+    parser.add_argument(
+        "-d",
+        "--dict",
+        type=str,
+        nargs="?",
+        help="Define font to be used",
+        default="cn"
+    )
 
     return parser.parse_args()
 
@@ -345,8 +353,7 @@ def main():
             raise
 
     # Creating word list
-    lang_dict = load_dict(args.language)
-    # print("lang_dict", lang_dict)
+    lang_dict = load_dict(args.dict)
     print("lang_dict", len(lang_dict))
     for str in lang_dict:
         print(str, end="")

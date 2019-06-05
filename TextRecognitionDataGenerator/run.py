@@ -289,7 +289,7 @@ def parse_arguments():
         default=""
     )
     parser.add_argument(
-        "-d",
+        "-di",
         "--dict",
         type=str,
         nargs="?",
@@ -388,7 +388,7 @@ def main():
             args.name_format = 2
     elif args.string_format != "":
         print("use normal: create_strings_from_string_format")
-        strings = create_strings_from_string_format(args.length, args.random, args.count, lang_dict)
+        strings = create_strings_from_string_format(args.string_format, args.count, lang_dict)
     else:
         print("use normal: create_strings_from_dict")
         # strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)

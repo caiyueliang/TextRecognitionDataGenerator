@@ -7,6 +7,7 @@ import sys
 from tqdm import tqdm
 from string_generator import (
     create_strings_from_dict,
+    create_strings_from_string_format,
     create_strings_from_dict_average,
     create_strings_from_file,
     create_strings_from_wikipedia,
@@ -279,6 +280,14 @@ def parse_arguments():
         help="Define font to be used",
         default=""
     )
+    parser.add_argument(
+        "-sf",
+        "--string_format",
+        type=str,
+        nargs="?",
+        help="Define font to be used",
+        default=""
+    )
 
     return parser.parse_args()
 
@@ -370,6 +379,9 @@ def main():
         # Set a name format compatible with special characters automatically if they are used
         if args.include_symbols or True not in (args.include_letters, args.include_numbers, args.include_symbols):
             args.name_format = 2
+    elif args.string_format != "":
+        print("use normal: create_strings_from_string_format")
+        strings = create_strings_from_string_format(args.length, args.random, args.count, lang_dict)
     else:
         print("use normal: create_strings_from_dict")
         # strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)

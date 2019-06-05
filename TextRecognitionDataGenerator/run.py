@@ -271,6 +271,14 @@ def parse_arguments():
         nargs="?",
         help="Define font to be used"
     )
+    parser.add_argument(
+        "-ti",
+        "--title",
+        type=str,
+        nargs="?",
+        help="Define font to be used",
+        default=""
+    )
 
     return parser.parse_args()
 
@@ -366,7 +374,7 @@ def main():
         print("use normal: create_strings_from_dict")
         # strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)
         strings = create_strings_from_dict_average(length=args.length, loop_times=args.loop_times, lang_dict=lang_dict,
-                                                   space_width=args.space_width)
+                                                   space_width=args.space_width, title=args.title)
 
     string_count = len(strings)
 

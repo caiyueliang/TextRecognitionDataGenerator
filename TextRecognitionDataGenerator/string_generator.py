@@ -44,7 +44,31 @@ def create_strings_from_dict(length, allow_variable, count, lang_dict):
     return strings
 
 
-def create_strings_from_dict_average(length, loop_times, lang_dict, min_length=2):
+# def create_strings_from_dict_average(length, loop_times, lang_dict, min_length=2):
+#     """
+#         Create all strings by picking X random word in the dictionnary
+#     """
+#     strings = []
+#
+#     for i in range(loop_times):
+#         copy_dict = copy.copy(lang_dict)
+#         # print(len(copy_dict))
+#         current_string = ""
+#
+#         while len(copy_dict) != 0:
+#             index = random.randrange(len(copy_dict))
+#             current_string += copy_dict[index]
+#             copy_dict.pop(index)
+#             current_string += ' '
+#
+#             if len(current_string) == length * 2:
+#                 strings.append(current_string[:-1])
+#                 current_string = ""
+#
+#         # if len(current_string) > min_length * 2:
+#         #     strings.append(current_string[:-1])
+#     return strings
+def create_strings_from_dict_average(length, loop_times, lang_dict, space_width, min_length=2):
     """
         Create all strings by picking X random word in the dictionnary
     """
@@ -59,11 +83,15 @@ def create_strings_from_dict_average(length, loop_times, lang_dict, min_length=2
             index = random.randrange(len(copy_dict))
             current_string += copy_dict[index]
             copy_dict.pop(index)
-            current_string += ' '
 
-            if len(current_string) == length * 2:
-                strings.append(current_string[:-1])
+            if len(current_string.replace(" ", "")) == length:
+                # print(current_string)
+                strings.append(current_string)
                 current_string = ""
+
+            if current_string != "":
+                for i in range(space_width):
+                    current_string += ' '
 
         # if len(current_string) > min_length * 2:
         #     strings.append(current_string[:-1])

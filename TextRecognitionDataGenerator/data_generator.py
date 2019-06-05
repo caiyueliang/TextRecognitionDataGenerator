@@ -125,15 +125,16 @@ class FakeTextDataGenerator(object):
         #####################################
         # Generate name for resulting image #
         #####################################
+        text_name = text.replace(" ", "")
         if name_format == 0:
-            image_name = '{}_{}.{}'.format(text, str(index), extension)
+            image_name = '{}_{}.{}'.format(text_name, str(index), extension)
         elif name_format == 1:
-            image_name = '{}_{}.{}'.format(str(index), text, extension)
+            image_name = '{}_{}.{}'.format(str(index), text_name, extension)
         elif name_format == 2:
-            image_name = '{}.{}'.format(str(index),extension)
+            image_name = '{}.{}'.format(str(index), extension)
         else:
             print('{} is not a valid name format. Using default.'.format(name_format))
-            image_name = '{}_{}.{}'.format(text, str(index), extension)
+            image_name = '{}_{}.{}'.format(text_name, str(index), extension)
 
         # Save the image
         final_image.convert('RGB').save(os.path.join(out_dir, image_name))

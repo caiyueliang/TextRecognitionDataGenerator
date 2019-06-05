@@ -244,10 +244,10 @@ def parse_arguments():
     parser.add_argument(
         "-sw",
         "--space_width",
-        type=float,
+        type=int,
         nargs="?",
         help="Define the width of the spaces between words. 2.0 means twice the normal space width",
-        default=1.0
+        default=1
     )
     parser.add_argument(
         "-m",
@@ -365,7 +365,8 @@ def main():
     else:
         print("use normal: create_strings_from_dict")
         # strings = create_strings_from_dict(args.length, args.random, args.count, lang_dict)
-        strings = create_strings_from_dict_average(length=args.length, loop_times=args.loop_times, lang_dict=lang_dict)
+        strings = create_strings_from_dict_average(length=args.length, loop_times=args.loop_times, lang_dict=lang_dict,
+                                                   space_width=args.space_width)
 
     string_count = len(strings)
 

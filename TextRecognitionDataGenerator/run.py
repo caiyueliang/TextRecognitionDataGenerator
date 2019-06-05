@@ -396,7 +396,7 @@ def main():
             [args.margins] * string_count,
             [args.fit] * string_count
         )
-    ), total=args.count):
+    ), total=string_count):
         pass
     p.terminate()
 

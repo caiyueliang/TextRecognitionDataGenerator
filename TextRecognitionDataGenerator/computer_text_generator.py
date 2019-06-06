@@ -53,6 +53,9 @@ def _generate_horizontal_text(text, font, text_color, font_size, space_width, fi
     # text_width = sum(words_width) + int(space_width) * (len(words) - 1)
     text_width = sum(words_width)
     text_height = max([image_font.getsize(w)[1] for w in words])
+    # print('words', words)
+    # print('words_width', [image_font.getsize(w)[0] for w in words])
+    # print('words_height', [image_font.getsize(w)[1] for w in words])
 
     txt_img = Image.new('RGBA', (text_width, text_height), (0, 0, 0, 0))
 
@@ -71,6 +74,7 @@ def _generate_horizontal_text(text, font, text_color, font_size, space_width, fi
         # txt_draw.text((sum(words_width[0:i]) + i * int(space_width), 0), w, fill=fill, font=image_font)
         txt_draw.text((sum(words_width[0:i]), 0), w, fill=fill, font=image_font)
 
+    # print('txt_img', txt_img.size)
     if fit:
         return txt_img.crop(txt_img.getbbox())
     else:

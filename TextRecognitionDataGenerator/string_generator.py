@@ -105,8 +105,8 @@ def create_strings_from_dict_average(length, loop_times, lang_dict, space_width,
         current_string = title
 
         while len(copy_dict) != 0:
-            # index = random.randrange(len(copy_dict))
-            index = 0
+            index = random.randrange(len(copy_dict))
+            # index = 0
             current_string += copy_dict[index]
             copy_dict.pop(index)
 
